@@ -19,17 +19,17 @@ def get_birthdays_per_week(users: list[dict]):
         if days_delta < 7:
             day_to_congrats = bd_this_year.strftime("%A")
 
-            day_to_congrats = (
-                "Monday"
-                if day_to_congrats in ["Saturday", "Sunday"]
-                else day_to_congrats
-            )
+            ## if the function is run on Sunday and the BD is in 6 days
+            if days_delta == 6 and day_to_congrats in ["Saturday", "Sunday"]:
+                day_to_congrats = "Next Monday"
+            elif day_to_congrats in ["Saturday", "Sunday"]:
+                day_to_congrats = "Monday"
 
             bds_seven_days[day_to_congrats].append(user["name"])
 
     ## print out the list of names per day for the next seven days
     for day, names in bds_seven_days.items():
-        print("{:<10}{:<5}{}".format(day, ":", ", ".join(names)))
+        print("{:<15}{:<5}{}".format(day, ":", ", ".join(names)))
 
     ## in case the list is needed elsewhere
     return bds_seven_days
@@ -62,8 +62,8 @@ if __name__ == "__main__":
         {
             "name": "Bill Spades",
             "birthday": test_date.replace(
-                day=test_date.day + 4
-            ),  ## BD this weekend; needs adjusting
+                day=test_date.day + 6
+            ),  ## BD weekend; needs adjusting
         },
         {
             "name": "Bill Dates",
