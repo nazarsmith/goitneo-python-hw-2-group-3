@@ -7,7 +7,9 @@ def main():
 
     print("Welcome to the assistant bot!")
     while True:
-        user_input = input("How can I help you?\nEnter a command: ")
+        user_input = input(
+            "How can I help you?\nEnter a command: "
+            )
 
         # if user_input.lower() in ["exit", "close", "good bye"]:
         #     print("Good bye!")
