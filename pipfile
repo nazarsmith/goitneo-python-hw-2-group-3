@@ -7,4 +7,4 @@ pre-commit = "*"
 
 [packages]
 black = "==24.1.1"
-pre-commit = "==*"
+pre-commit = "*"
