@@ -72,4 +72,4 @@ def show_all(contacts):
     phones = list(contacts.values())
 
     for i in range(len(contacts.items())):
-        yield "{:>2}. | {:^20} | {:>10}".format(i + 1,names[i], phones[i])
+        yield "{:>2}. | {:^20} | {:>10}".format(i + 1, names[i], phones[i])
