@@ -12,21 +12,21 @@ def main():
         # if user_input.lower() in ["exit", "close", "good bye"]:
         #     print("Good bye!")
         #     break
-        
+
         command, *args = parser(user_input)
         if command in ["exit", "close"]:
             print("Good bye!")
             break
 
         elif command in ["hello", "hi", "greetings"]:
-            print(greeting(greet_counter), end = " ")
+            print(greeting(greet_counter), end=" ")
 
         elif command == "add":
             print(add_contact(contacts, args))
 
         elif command == "all":
             [print(c) for c in show_all(contacts)]
-        
+
         elif command == "phone":
             print(show_phone(contacts, args))
 
