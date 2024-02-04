@@ -2,18 +2,11 @@ from handler import *
 
 
 def main():
-    greet_counter = 0
     contacts = {}
 
     print("Welcome to the assistant bot!")
     while True:
-        user_input = input(
-            "How can I help you?\nEnter a command: "
-            )
-
-        # if user_input.lower() in ["exit", "close", "good bye"]:
-        #     print("Good bye!")
-        #     break
+        user_input = input("How can I help you?\nEnter a command: ")
 
         command, *args = parser(user_input)
         if command in ["exit", "close"]:
@@ -21,7 +14,7 @@ def main():
             break
 
         elif command in ["hello", "hi", "greetings"]:
-            print(greeting(greet_counter), end=" ")
+            print(greeting(), end=" ")
 
         elif command == "add":
             print(add_contact(contacts, args))

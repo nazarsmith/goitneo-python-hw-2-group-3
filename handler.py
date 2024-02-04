@@ -25,9 +25,7 @@ def check_phone_num(phone_num):
     return phone_num
 
 
-def greeting(greet_counter):
-    if greet_counter == 2:
-        return "Please restart me to update your contacts. Good bye!"
+def greeting():
     ## select and play a greeting reaction
     prompt = random.choice(["Hello!", "Hi!", "Greetings!"])
     return prompt
@@ -59,6 +57,7 @@ def change_contact(contacts, args):
 
 
 def show_phone(contacts, args):
+    ## for cases when name + surname are provided
     if len(args) == 2:
         args = [" ".join(args)]
     try:

@@ -5,13 +5,10 @@ import collections
 def get_birthdays_per_week(users: list[dict]):
 
     bds_seven_days = collections.defaultdict(list)
-
     current_date = datetime.today().date()
 
     for user in users:
         user_bd = user["birthday"].date()
-
-        ## calculate user's BD this year
         bd_this_year = user_bd.replace(year=current_date.year)
 
         if bd_this_year < current_date:
