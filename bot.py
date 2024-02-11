@@ -1,4 +1,12 @@
-from handler import *
+from handler import (
+    parser,
+    check_phone_num,
+    add_contact,
+    show_all,
+    change_contact,
+    show_phone,
+    greeting,
+)
 
 
 def main():
@@ -6,9 +14,12 @@ def main():
 
     print("Welcome to the assistant bot!")
     while True:
-        user_input = input("How can I help you?\nEnter a command: ")
 
-        command, *args = parser(user_input)
+        user_input = input("How can I help you?\nEnter a command: ")
+        command, *args, message = parser(user_input)
+        if message:
+            print(message)
+
         if command in ["exit", "close"]:
             print("Good bye!")
             break
@@ -27,6 +38,9 @@ def main():
 
         elif command == "change":
             print(change_contact(contacts, args))
+
+        elif not command:
+            pass
 
         else:
             print("Invalid command. Please try again.")
