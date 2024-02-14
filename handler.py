@@ -7,26 +7,20 @@ class WrongInfoException(ValueError):
         self.message = message
 
 
-class WrongNumber(ValueError):
-    pass
-
-
 def wrong_input_handling(function):
     def handling(*args, **kwargs):
         try:
             return function(*args, **kwargs)
         except WrongInfoException as err:
             return err
-        except WrongNumber as err:
-            return err
         except AttributeError:
             return "The number you entered is too short or too long. Try again."
         except KeyError:
             return "No contact with this name was found. Try again."
-        # except ValueError:
-        #     return "Please start with a valid command."
-        # except:
-        #     return "Something went wrong. Please try again."
+        except ValueError:
+            return "The number must contain only digits and/or a + sign. Try again."
+        except:
+            return "Something went wrong. Please try again."
 
     return handling
 
@@ -48,17 +42,7 @@ def parser(user_input):
 def check_phone_num(phone_num):
     pattern = "^[\+0-9\-]{10,16}$"
 
-    ## check if the phone number contains only numbers
-    try:
-        int(phone_num.strip("+"))
-    except ValueError:
-        raise WrongNumber(
-            "The number must contain only digits and/or a + sign. Try again."
-        )
-    except:
-        return "Something went worng. Please try again."
-
-    ## throws exception if there was no match
+    int(phone_num.strip("+"))
     phone_num = re.match(pattern, phone_num)
     phone_num = phone_num.group(0)
 

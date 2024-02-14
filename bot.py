@@ -1,6 +1,5 @@
 from handler import (
     parser,
-    check_phone_num,
     add_contact,
     show_all,
     change_contact,
@@ -47,5 +46,4 @@ def main():
 
 
 if __name__ == "__main__":
-
     main()
